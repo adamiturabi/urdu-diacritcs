@@ -1,0 +1,96 @@
+---
+title: "A disambiguating diacritical scheme for Classical Persian and Urdu vowels in the Arabic script"
+author: "adami.turabi [at] protonmail [dot] com"
+output:
+  bookdown::gitbook:
+    split_by: "none"
+    pandoc_args: ["--lua-filter=trn.lua"]
+    keep_md: yes
+    css: mystyle.css
+    config:
+      toc:
+        collapse: section
+        scroll_highlight: yes
+        before: null
+        after: null
+      toolbar:
+        position: fixed
+      edit : null
+      download: null
+      search: yes
+      fontsettings:
+        theme: sepia
+        family: serif
+        size: 2
+      sharing:
+        facebook: yes
+        github: no
+        twitter: yes
+        linkedin: yes
+        weibo: no
+        instapaper: no
+        vk: no
+        all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper']
+      info: yes
+---
+[بسم الله الرحمن الرحيم]{.ar}
+
+[الحمد لله والصلاة والسلام على نبينا محمد. أما بعد:]{.ar}
+
+# Problem
+
+Urdu and Persian are written in the Arabic script. These languages have vowels that don't exist in Arabic and there is no disambiguous way to write these additional vowels in the Arabic script.
+
+# Vowels in Urdu and Classical Persian
+
+Classical Persian and Urdu have all the vowels and diphthongs (albeit with different qualities) that Arabic does:
+
+|Vowel   |Representation | Example|
+|:----------|:---------|:-------|
+|[a]{.trn}  |[ـَ]{.ar}  | [شَب]{.ar} [cab]{.trn}|
+|[i]{.trn}  |[ـِ]{.ar}  | [مِل]{.ar} [mil]{.trn}|
+|[u]{.trn}  |[ـُ]{.ar}  | [بُت]{.ar} [but]{.trn}|
+|[A]{.trn}  |[ـَا]{.ar} | [مَال]{.ar} [mAl]{.trn}|
+|[I]{.trn}  |[ـِی]{.ar} | [مِیل]{.ar} [mIl]{.trn}|
+|[U]{.trn}  |[ـُو]{.ar} | [رُوح]{.ar} [rUH]{.trn}|
+|[aw]{.trn} |[ـَوْ]{.ar} | [غَوْر]{.ar} [gawr]{.trn}|
+|[ay]{.trn} |[ـَیْ]{.ar} | [مَیْل]{.ar} [mayl]{.trn}|
+
+However, Classical Persian and Urdu have two additional vowels that are not found in Arabic:
+
+1. [O]{.trn}: This is called [واوِ مجهول]{.ar} [wAw-i majhUl]{.trn} "unknown waw", called so because this sound is unknown in Arabic. There is currently no standard way to disambiguously represent this in writing in the Arabic script. It is written without any diacritical mark, example [شور]{.ar} [cOr]{.trn}. But this is not disambiguating since vowels are usually omitted for all words and the above representation could just as easily be read [cawr]{.trn} or [cUr]{.trn}.
+
+2. [E]{.trn}: This is called [ياءِ مجهول]{.ar} [yAW-i majhUl]{.trn} "unknown yeh", called so because this sound is unknown in Arabic. Urdu has invented a way to somewhat disambiguously write this vowel, but only at the end of a word. For this Urdu uses "Big yeh" [ے]{.ar} (U+06D2). For example [لے]{.ar} [lE]{.trn}. Conversely, for the vowel [I]{.trn} at the end of a word, Urdu uses "small yeh" [ی]{.ar} (U+06CC), for example: [لِی]{.ar} [lI]{.trn}. By the way, the diphthong [ay]{.trn} at the end of a word is also written with "big yeh", e.g. [مَےْ]{.ar} [may]{.trn}.
+   In the middle of a word, there is no disambiguation, e.g. [شیر]{.ar} [cEr]{.trn}.
+
+# Proposal
+
+We propose the use of 
+U+08F3 "Arabic Small High Waw" and
+U+06E7 "Arabic Small High Yeh" as diacritics to represent the above two vowels disambiguously. These were originally added to Unicode for Qurʾanic orthography. However we may re-purpose them in the context of Urdu and Classical Persian typesetting.
+
+|Vowel   |Diacritic| Representation | Example|
+|:----------|:------|:---------|:-------|
+|[O]{.trn}  |U+08F3 Arabic Small High Waw |[ـوࣳ]{.ar}  | [شوࣳر]{.ar} [cOr]{.trn}|
+|[E]{.trn}  |U+06E7 Arabic Small High Yeh |[ـیۧ]{.ar} , [ـےۧ]{.ar}  | [شیۧر]{.ar} [cEr]{.trn} , [لےۧ]{.ar} [lE]{.trn}|
+
+It is possible that U+08F3 Arabic Small High Waw [◌ࣳ]{.ar} could be confused with U+064F Arabic Damma [◌ُ]{.ar} but this should be harmless since damma is never placed on the waw. Here are some examples with the proposed scheme:
+
++ [شُورَیٰ]{.ar} [cUrA]{.trn}
++ [شوࣳر]{.ar} [cOr]{.trn}
++ [غَوْر]{.ar} [gawr]{.trn}
++ [شِیر]{.ar} [cIr]{.trn}
++ [شیۧر]{.ar} [cEr]{.trn}
++ [غَیْر]{.ar} [gayr]{.trn}
+
+For words ending with [E]{.trn} Urdu already uses U+06D2 "Arabic Letter Yeh Barree". However, Classical Persian typesetters may prefer to use U+06CC "Arabic Letter Farsi Yeh" to be consistent. Even so, they should be able to use the proposed diacritic U+06E7 "Arabic Small High Yeh" on top of the final yeh.
+
+| Urdu typesetting         | Classical Persian typesetting      |
+|:-------------------------|:------------------------|
+| [مِی]{.ar} [mI]{.trn}     | [مِی]{.ar} [mI]{.trn}    |
+| [وَلےۧ]{.ar} [walE]{.trn}  | [وَلیۧ]{.ar} [walE]{.trn}|
+| [مَےْ]{.ar} [may]{.trn}    | [مَیْ]{.ar} [may]{.trn}   |
+
+# Conclusion
+
+We have proposed the use of two diacritics to represent [واوِ مجهول]{.ar} [wAw-i majhUl]{.trn} and [ياءِ مجهول]{.ar} [yAW-i majhUl]{.trn}. These may be useful for typesetting works where disambiguation is called for, like dictionaries and critical editions, without having to resort to transcription in the Latin script.
