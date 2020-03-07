@@ -4,6 +4,7 @@ author: "adami.turabi [at] protonmail [dot] com"
 output:
   bookdown::gitbook:
     split_by: "none"
+    self_contained: yes
     pandoc_args: ["--lua-filter=trn.lua"]
     keep_md: yes
     css: mystyle.css
